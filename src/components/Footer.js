@@ -7,12 +7,23 @@ import '../styles/Footer.css';
 
 function Footer() {
   return (
-    <div className='footer'>
+    <footer className='footer'>
       <div className='socialMedia'>
-        <InstagramIcon /> <TwitterIcon /> <FacebookIcon /> <LinkedinIcon />
+        <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+          <InstagramIcon />
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">
+          <TwitterIcon />
+        </a>
+        <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
+          <FacebookIcon />
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+          <LinkedinIcon />
+        </a>
       </div>
-      <p> &copy; 2025 Nithishpizza.com</p>
-    </div>
+      <p>&copy; {new Date().getFullYear()} Nithish Pizzeria</p>
+    </footer>
   )
 }
 

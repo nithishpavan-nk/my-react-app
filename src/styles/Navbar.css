@@ -1,102 +1,144 @@
 .navbar {
   width: 100%;
-  height: 100px;
-  background-color: #121619;
+  height: 84px;
+  background-color: var(--crust);
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-soft);
 }
 
 .navbar .leftSide {
-  flex: 50%;
-  height: 100%;
   display: flex;
   align-items: center;
-  padding-left: 150px;
+}
+
+.brandLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
 }
 
 .navbar .leftSide img {
-  width: 70px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.brandName {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: 0.2px;
 }
 
 .navbar .rightSide {
-  flex: 50%;
-  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
 }
 
-.navbar a {
-  color: white;
+.navLink {
+  color: var(--cream-dim);
   text-decoration: none;
-  margin: 20px;
+  margin: 0 4px;
+  padding: 8px 4px;
+  font-size: 15px;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.2s ease;
 }
 
-.navbar .rightSide button {
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--gold);
+  transition: width 0.25s ease;
+}
+
+.navLink:hover {
+  color: var(--cream);
+}
+
+.navLink:hover::after,
+.navLink.active::after {
+  width: 100%;
+}
+
+.navLink.active {
+  color: var(--gold);
+}
+
+.navToggle {
+  display: none;
   background-color: transparent;
   border: none;
-  color: white;
+  color: var(--cream);
   cursor: pointer;
+  padding: 6px;
 }
 
-.navbar .rightSide svg {
-  font-size: 40px;
+.navToggle svg {
+  font-size: 32px;
 }
 
-.navbar #open {
-  padding-left: 0px;
-}
-.navbar #open img {
+.mobileMenu {
   display: none;
 }
 
-.navbar #close img {
-  display: inherit;
-}
-
-.navbar #open .hiddenLinks {
-  display: inherit;
-  margin-left: 30px;
-}
-
-.navbar #close .hiddenLinks {
-  display: none;
-}
-
-.navbar #open a {
-  width: 70px;
-  margin: 5px;
-}
-@media only screen and (max-width: 900px) {
-  .navbar .rightSide a {
-    width: 70px;
+@media only screen and (max-width: 700px) {
+  .navbar {
+    padding: 0 20px;
   }
-  .navbar .leftSide {
-    padding-left: 50px;
-  }
-}
 
-@media only screen and (max-width: 600px) {
-  .navbar .rightSide a {
+  .navbar .rightSide .navLink {
     display: none;
   }
 
-  .navbar .rightSide {
-    justify-content: flex-end;
-    padding-right: 50px;
-  }
-
-  .navbar .rightSide button {
+  .navToggle {
     display: inherit;
   }
-}
 
-@media only screen and (min-width: 600px) {
-  .navbar .rightSide button {
-    display: none;
+  .brandName {
+    font-size: 18px;
   }
 
-  .hiddenLinks {
+  .mobileMenu {
+    position: fixed;
+    top: 84px;
+    left: 0;
+    right: 0;
+    background-color: var(--crust);
+    flex-direction: column;
+    display: flex;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    z-index: 99;
+  }
+
+  .mobileMenu.open {
+    max-height: 320px;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .mobileMenu .navLink {
+    padding: 18px 24px;
+    border-bottom: 1px solid rgba(250, 243, 231, 0.08);
+    margin: 0;
+  }
+
+  .mobileMenu .navLink::after {
     display: none;
   }
 }
