@@ -24,7 +24,9 @@ pipeline {
                 withCredentials([file(credentialsId: 'pizzeria-env-file', variable: 'ENV_FILE')]) {
                     dir("${WORKSPACE}") {
                         sh '''
+                            rm -f .env
                             cp "$ENV_FILE" .env
+                            chmod 600 .env
                             docker compose -p pizzeria down || true
                             docker compose -p pizzeria up --build -d
                         '''
