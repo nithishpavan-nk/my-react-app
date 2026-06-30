@@ -3,10 +3,13 @@ import Logo from '../assets/pizzaLogo.png';
 import { Link, NavLink } from 'react-router-dom';
 import ReorderIcon from '@mui/icons-material/Reorder';
 import CloseIcon from '@mui/icons-material/Close';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { useCart } from '../context/CartContext';
 import "../styles/Navbar.css";
 
 function Navbar() {
   const [openLinks, setOpenLinks] = useState(false);
+  const { itemCount } = useCart();
 
   const toggleNavbar = () => {
     setOpenLinks((prev) => !prev);
@@ -42,6 +45,10 @@ function Navbar() {
             {link.label}
           </NavLink>
         ))}
+        <Link to="/cart" className="cartLink" onClick={closeNavbar} aria-label={`Cart, ${itemCount} item${itemCount === 1 ? '' : 's'}`}>
+          <ShoppingCartIcon />
+          {itemCount > 0 && <span className="cartBadge">{itemCount}</span>}
+        </Link>
         <button
           className="navToggle"
           onClick={toggleNavbar}
@@ -63,6 +70,9 @@ function Navbar() {
             {link.label}
           </NavLink>
         ))}
+        <Link to="/cart" className="navLink" onClick={closeNavbar}>
+          Cart {itemCount > 0 && `(${itemCount})`}
+        </Link>
       </div>
     </nav>
   );

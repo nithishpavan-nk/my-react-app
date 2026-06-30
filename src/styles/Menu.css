@@ -73,6 +73,55 @@
   padding: 40px 0;
 }
 
+.menuNotice {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--tomato-dark);
+  background-color: #fdf0ec;
+  border: 1px solid rgba(193, 67, 46, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 10px 18px;
+  margin-bottom: 28px;
+}
+
+.menuLoading {
+  font-family: var(--font-body);
+  color: var(--espresso);
+  opacity: 0.7;
+  padding: 40px 0;
+}
+
+.menuItemFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.addToCartButton {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: var(--crust);
+  color: var(--cream);
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.addToCartButton:hover {
+  background-color: var(--tomato);
+  transform: translateY(-1px);
+}
+
+.addToCartButton.added {
+  background-color: var(--basil);
+}
+
 /* MENU ITEM STYLING */
 
 .menuItem {
@@ -125,6 +174,7 @@
   font-size: 19px;
   font-weight: 600;
   color: var(--tomato);
+  white-space: nowrap;
 }
 
 @media only screen and (max-width: 1100px) {
